@@ -36,7 +36,7 @@
 
           <ul class="d-flex justify-content-end list-unstyled m-0">
             <li>
-              <a routerLink="sign-in" class="rounded-circle bg-light p-2 mx-1">
+              <a routerLink="profile" class="rounded-circle bg-light p-2 mx-1">
                 <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
               </a>
             </li>
@@ -56,8 +56,15 @@
               </a>
             </li>
           </ul>
-
           <div class="cart text-end d-none d-lg-block dropdown">
+            <button *ngIf="Authenticated;else loggedIn" class="btn btn-dark" style="margin-right:5px ;" (click)="toggleAuth()">
+              Log in
+            </button>
+            <ng-template #loggedIn>
+            <button class="btn btn-dark" style="margin-right:5px ;" (click)="toggleAuth()">
+              Log out
+            </button>
+            </ng-template>
             <button class="btn btn-primary" (click)="toggleCart()">
                 Show Cart
             </button>
@@ -102,7 +109,7 @@
                       <a class="nav-link dropdown-toggle" role="button" id="pages" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                       <ul class="dropdown-menu" aria-labelledby="pages">
                         <li><a routerLink="about" class="dropdown-item">About</a></li>
-                        <li><a routerLink="myOrders" class="dropdown-item">My Orders</a></li>
+                        <li><a routerLink="orders" class="dropdown-item">My Orders</a></li>
                         <li><a routerLink="myAccount" class="dropdown-item">My Account</a></li>
                       </ul>
                     </li>

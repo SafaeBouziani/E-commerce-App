@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { ListProductComponent } from './list-product/list-product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OrdersComponent } from './orders/orders.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -11,5 +14,12 @@ export const routes: Routes = [
     },
     {
         path:'product/detail/:id',component:ProductDetailComponent
+    },
+    {
+        path:'orders',component:OrdersComponent,canActivate:[AuthGuard]
+    },
+    {
+        path:'login',component:SignInComponent
     }
+
 ];
