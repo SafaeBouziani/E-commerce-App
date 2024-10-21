@@ -4,6 +4,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { OrdersComponent } from './orders/orders.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,9 @@ export const routes: Routes = [
     },
     {
         path:'login',component:SignInComponent
+    },
+    {
+        path:'sign-up',component:SignUpComponent
     }
 
 ];

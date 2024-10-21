@@ -1,0 +1,32 @@
+/* Container to center the form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full-screen height */
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  /* Styling for the form */
+  .auth-form {
+    width: 400px; /* Fixed width */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 8px;
+  }
+  
+  .form-outline .form-control {
+    height: 45px;
+  }
+  
+  .form-outline .form-label {
+    font-size: 14px;
+    color: #495057;
+  }
+  
+  .text-center p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
