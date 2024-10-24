@@ -29,4 +29,14 @@
     margin-top: 15px;
     font-size: 14px;
   }
+  .error-message {
+    color: red; /* Text color */
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c2c7; /* Slightly darker red border */
+    padding: 10px; /* Padding inside the box */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 15px; /* Space below the message */
+    font-size: 14px; /* Text size */
+    text-align: center; /* Center the text */
+  }
   

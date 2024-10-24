@@ -1,14 +1,17 @@
 <div class="container">
     <form (ngSubmit)="register()" #f="ngForm" class="auth-form">
+      @if (errorMess){
+        <div class="error-message">{{ errorMess }}</div>
+       }
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control" [(ngModel)]="email" name="email" #email="ngModel" required />
+        <input type="email" id="form2Example1" class="form-control" [(ngModel)]="email" name="email"  required />
         <label class="form-label" for="form2Example1">Email address</label>
       </div>
   
       <!-- Password input -->
       <div data-mdb-input-init class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control" [(ngModel)]="password" name="password" #password="ngModel" required />
+        <input type="password" id="form2Example2" class="form-control" [(ngModel)]="password" name="password"  required />
         <label class="form-label" for="form2Example2">Password</label>
       </div>
   

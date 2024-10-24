@@ -57,7 +57,7 @@
             </li>
           </ul>
           <div class="cart text-end d-none d-lg-block dropdown">
-            <button *ngIf="Authenticated;else loggedIn" class="btn btn-dark" style="margin-right:5px ;" (click)="toggleAuth()">
+            <button routerLink="login" *ngIf="Authenticated;else loggedIn" class="btn btn-dark" style="margin-right:5px ;" (click)="toggleAuth()">
               Log in
             </button>
             <ng-template #loggedIn>

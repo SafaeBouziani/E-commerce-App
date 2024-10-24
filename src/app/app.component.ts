@@ -22,7 +22,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((val) => {
       // Check the current route, and hide the navbar if it's the login page
-      this.showNavbar = !this.router.url.includes('/login');
+      this.showNavbar = !(this.router.url.includes('/login')||(this.router.url.includes('/sign-up')));
     });
   }
 }
