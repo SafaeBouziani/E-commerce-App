@@ -1,17 +1,21 @@
-/* General container styling */
+/* Container to center the form */
 .container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Auth form styling */
-  .auth-form {
-    padding: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full-screen height */
+  background-color: #f8f9fa;
+  max-width: 100%; /* Light background color */
+}
+
+/* Styling for the form */
+.auth-form {
+  width: 400px; /* Fixed width */
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 8px;
+}
   
   /* Form input fields */
   .form-outline {

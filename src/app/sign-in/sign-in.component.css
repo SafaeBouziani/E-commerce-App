@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full-screen height */
-    background-color: #f8f9fa; /* Light background color */
+    background-color: #f8f9fa;
+    max-width: 100%; /* Light background color */
   }
   
   /* Styling for the form */
@@ -18,6 +19,7 @@
   
   .form-outline .form-control {
     height: 45px;
+    border-color: #ced4da;
   }
   
   .form-outline .form-label {

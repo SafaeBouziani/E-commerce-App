@@ -1,7 +1,7 @@
-import { Injectable,inject } from '@angular/core';
+import { Injectable,inject, signal,WritableSignal } from '@angular/core';
 import { BehaviorSubject, Observable,from } from 'rxjs';
-import { Auth,createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
-
+import { Auth,createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile,user } from '@angular/fire/auth';
+import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,7 @@ export class AuthService {
   authenticated$ = this.authenticatedSubject.asObservable(); // Observable for components to subscribe to
 
   constructor() {}
+  
 
   // Method to toggle authentication state
   toggleAuth() {
@@ -21,14 +22,19 @@ export class AuthService {
     return this.authenticatedSubject.value; // Get current authentication state
   }
   fireBaseAuth = inject(Auth);
+  user$=user(this.fireBaseAuth);
+  currentUserSig: WritableSignal<User | null> = signal<User | null>(null);
+
   register (email:string,userName:string,password:string):Observable<void>{
     const promise=createUserWithEmailAndPassword(this.fireBaseAuth,email,password).then((response)=>
       updateProfile(response.user,{displayName:userName}));
+    this.toggleAuth();
     return from(promise);
   }
   login(email:string,password:string):Observable<void>{
     const promise= signInWithEmailAndPassword(
       this.fireBaseAuth,email,password).then(()=>{});
+    this.toggleAuth();
     return from(promise);
   }
 

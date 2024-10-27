@@ -14,7 +14,16 @@ export class CartService {
   cartVisibility$ = this.cartVisibility.asObservable();
   cartDetails$ = this.cartDetailsSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+    this.loadCart();
+  }
+
+  // Load cart from localStorage on initialization
+  private loadCart() {
+    const cartData = JSON.parse(localStorage.getItem('cartDetails') || '[]');
+    this.cartDetails = cartData;
+    this.cartDetailsSubject.next(this.cartDetails);
+  }
 
   // Method to toggle cart visibility
   toggleCart() {
@@ -28,6 +37,7 @@ export class CartService {
       this.cartDetails.push(cartitem);
     }
     this.cartDetailsSubject.next(this.cartDetails);
+    localStorage.setItem('cartDetails', JSON.stringify(this.cartDetails));
   }
   
   getTotal(): number {

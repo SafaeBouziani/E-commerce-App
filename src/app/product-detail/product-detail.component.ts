@@ -5,10 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartItem } from '../models/cart-item';
 import { CartService } from '../services/cart.service';
+import { CommentComponent } from '../comment/comment.component';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommentComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
