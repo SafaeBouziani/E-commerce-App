@@ -37,5 +37,5 @@ export class AuthService {
     this.toggleAuth();
     return from(promise);
   }
-
+  getToken(){}
 }

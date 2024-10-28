@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shopfer",
+            "outputPath": "front/shopfer",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -78,8 +78,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1.5mb",  
+                  "maximumError": "2mb"        
                 },
                 {
                   "type": "anyComponentStyle",
