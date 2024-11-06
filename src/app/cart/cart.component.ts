@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   standalone:true,
   imports:[CommonModule,RouterLink],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   isVisible = true;
@@ -29,6 +29,12 @@ export class CartComponent implements OnInit {
   }
   toggleCart() {
     this.cs.toggleCart();
+  }
+  valider(){
+    this.cs.validerPanier();
+  }
+  removeItem(item:CartItem){
+    this.cs.removeItem(item);
   }
 
 }

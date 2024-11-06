@@ -15,15 +15,23 @@
                       <h6 class="my-0">{{item.product.title}}</h6>
                       <small class="text-body-secondary">$ {{item.product.price}}</small>
                   </div>
-                  <span class="text-body-secondary">{{item.qte}}</span>
+                  <div>
+                  <span class="text-body-secondary" style="margin-right: 15px;">{{item.qte}}</span>
+                  <svg (click)=removeItem(item) width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;">
+                    <path d="M3 6h18" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 6V4h8v2" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5 6h14l-1 14H6L5 6z" stroke="#000" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                    <path d="M10 11v5M14 11v5" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  </div>
               </li>
               <li class="list-group-item d-flex justify-content-between">
                   <span>Total (USD)</span>
-                  <strong>$ {{totalPrice}}</strong>
+                  <strong>$ {{totalPrice | number:'1.2-2'}}</strong>
               </li>
           </ul>
 
-          <button routerLink="login" class="w-100 btn btn-primary btn-lg" type="button">Continue to checkout</button>
+          <button class="w-100 btn btn-primary btn-lg" (click)="valider()" type="button">Continue to checkout</button>
       </div>
   </div>
 </div>
