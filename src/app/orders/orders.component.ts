@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Commande } from '../models/commande';
 import { CommandeService } from '../services/commande.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
+import { AuthService } from '../services/auth.service';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-orders',
@@ -17,17 +19,27 @@ export class OrdersComponent implements OnInit {
   selectedCommande: Commande | null = null;
   productNameMap: Map<number, Promise<string>> = new Map();
 
-  constructor(private commandeService: CommandeService, private ps: ProductService) {}
+  constructor(private commandeService: CommandeService, private ps: ProductService,private as:AuthService,private dp:DatePipe) {}
 
   ngOnInit(): void {
     this.loadOrders();
   }
 
   loadOrders() {
-    this.commandeService.getAllCommandes().subscribe((data: Commande[]) => {
-      this.commandes = data;
+    this.as.user$.subscribe((firebaseUser: User | null) => {
+      if (firebaseUser) {
+        const userId = firebaseUser.uid;
+        this.commandeService.getCommandesByUserId(userId).subscribe((data: Commande[]) => {
+          // Format dateCommande for each Commande
+          this.commandes = data.map(commande => ({
+            ...commande,
+            dateCommande: this.dp.transform(commande.dateCommande, 'yyyy-MM-dd') || ''  // Reformat date
+          }));
+        });
+      }
     });
   }
+  
 
   showDetails(commande: Commande) {
     this.selectedCommande = commande;

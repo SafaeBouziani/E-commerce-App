@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, updateDoc, getDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, updateDoc, getDoc, deleteDoc,query, where } from '@angular/fire/firestore';
 import { CartItem } from '../models/cart-item';
 import { Commande } from '../models/commande';
 import { OrderDto } from '../models/order-dto';
-import { map } from 'rxjs';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -58,5 +58,10 @@ export class CommandeService {
     deleteDoc(docInstance)
       .then(() => console.log('Data deleted!'))
       .catch(error => console.log(error));
+  }
+  getCommandesByUserId(userid: string): Observable<Commande[]> {
+    const collectionInstance = collection(this.fs, 'commandes');
+    const userQuery = query(collectionInstance, where('userid', '==', userid));
+    return collectionData(userQuery, { idField: 'id' }) as Observable<Commande[]>;
   }
 }

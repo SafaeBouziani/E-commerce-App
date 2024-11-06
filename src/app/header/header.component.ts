@@ -30,7 +30,7 @@ export class HeaderComponent {
   }
 
   toggleAuth() {
-    this.authService.toggleAuth(); // Call the method in AuthService
+    this.authService.logout(); // Call the method in AuthService
   }
 
 }

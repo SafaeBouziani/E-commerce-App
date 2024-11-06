@@ -2,6 +2,7 @@ import { Injectable,inject, signal,WritableSignal } from '@angular/core';
 import { BehaviorSubject, Observable,from } from 'rxjs';
 import { Auth,createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile,user } from '@angular/fire/auth';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,7 @@ export class AuthService {
   private authenticatedSubject = new BehaviorSubject<boolean>(false);
   authenticated$ = this.authenticatedSubject.asObservable(); // Observable for components to subscribe to
 
-  constructor() {}
+  constructor(private router:Router) {}
   
 
   // Method to toggle authentication state
@@ -38,4 +39,8 @@ export class AuthService {
     return from(promise);
   }
   getToken(){}
+  logout() {
+    this.toggleAuth();
+    this.router.navigate(['/home']);
+  }
 }
